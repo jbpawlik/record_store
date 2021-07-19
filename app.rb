@@ -23,10 +23,29 @@ get('/albums/:id') do
   erb(:album)
 end
 
+get('/albums/:id/edit') do
+  @album = Album.find(params[:id].to_i())
+  erb(:edit_album)
+end
+
 post('/albums') do
   name = params[:album_name]
   album = Album.new(name, nil)
   album.save()
   @albums = Album.all() # Adding this line will fix the error.
+  erb(:albums)
+end
+
+patch('/albums/:id') do
+  @album = Album.find(params[:id].to_i())
+  @album.update(params[:name])
+  @albums = Album.all
+  erb(:albums)
+end
+
+delete('/albums/:id') do
+  @album = Album.find(params[:id].to_i())
+  @album.delete()
+  @albums = Album.all
   erb(:albums)
 end
