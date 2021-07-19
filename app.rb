@@ -39,3 +39,8 @@ end
 get('/custom_route') do
   "We can even create custom routes, but we should only do this when needed."
 end
+
+get('/test') do
+  @something = "this is a variable"
+  erb(:whatever)
+end
