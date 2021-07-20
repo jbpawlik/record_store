@@ -4,11 +4,6 @@ require('./lib/album')
 require('pry')
 also_reload('lib/**/*.rb')
 
-get('/albums') do
-  @sorted = Album.sort
-  erb(:albums)
-end
-
 get('/') do
   @albums = Album.all
   erb(:albums)
@@ -21,6 +16,11 @@ end
 
 get('/albums/new') do
   erb(:new_album)
+end
+
+get('/albums') do
+  @sorted = Album.sort
+  erb(:albums)
 end
 
 get('/albums/:id') do

@@ -4,9 +4,7 @@
 
 <% if @albums.any? %>
   <ul>
-    
     <% @albums.each do |album| %>
-    <% binding.pry %>
     <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
   <% end %>
   </ul>
