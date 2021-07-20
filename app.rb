@@ -28,9 +28,7 @@ get('/albums/:id/edit') do
   erb(:edit_album)
 end
 
-post('/albums') do
-  
-end
+
 
 post('/albums') do
   name = params[:album_name]

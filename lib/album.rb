@@ -46,7 +46,8 @@ class Album
     @@albums.delete(self.id)
   end
 
-  def self.search(name)
-    @@albums.select(name)
+  def search(name)
+    result = @@albums.select {|k, v| v.name == name}
+    result.values[0]
   end
 end
