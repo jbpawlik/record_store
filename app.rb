@@ -28,6 +28,19 @@ get('/albums/:id/edit') do
   erb(:edit_album)
 end
 
+post('/albums/:id') do
+  searchInput = params[:search]
+  @albums = Album.all()
+  @album = Album.find(params[:search])
+  result = @albums.search(searchInput)
+  binding.pry
+  erb(:albums)
+end
+
+# get('/search_results') do
+#   @album = Album.find(params[:search])
+#   erb(:search_results)
+# end
 
 
 post('/albums') do
