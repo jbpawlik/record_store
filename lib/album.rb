@@ -46,8 +46,13 @@ class Album
     @@albums.delete(self.id)
   end
 
-  def search(name)
+  def self.search(name)
     result = @@albums.select {|k, v| v.name == name}
     result.values[0]
   end
+
+  def self.sort
+    sorted = @@albums.sort_by {|k, v| v.name.downcase}
+  end
+
 end

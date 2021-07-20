@@ -73,8 +73,20 @@ require 'album'
       album.save()
       album2 = Album.new("Blue", nil, nil, nil, nil)
       album2.save()
-      expect(album.search("Blue")).to(eq(album2))
+      expect(Album.search("Blue")).to(eq(album2))
     end
   end
+
+  describe ('#sort') do
+    it('sorts albums alphabetically') do
+    album = Album.new("Giant Steps", nil, nil, nil, nil)
+      album.save()
+      album2 = Album.new("Blue", nil, nil, nil, nil)
+      album2.save()
+      album3 = Album.new("Albatross", nil, nil, nil, nil)
+      album3.save()
+      expect(Album.sort[0][1]).to(eq(album3))
+  end
+end
 # end
 

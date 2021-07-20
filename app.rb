@@ -4,6 +4,11 @@ require('./lib/album')
 require('pry')
 also_reload('lib/**/*.rb')
 
+get('/albums') do
+  @sorted = Album.sort
+  erb(:albums)
+end
+
 get('/') do
   @albums = Album.all
   erb(:albums)
@@ -28,20 +33,11 @@ get('/albums/:id/edit') do
   erb(:edit_album)
 end
 
-post('/albums/:id') do
-  searchInput = params[:search]
-  @albums = Album.all()
-  @album = Album.find(params[:search])
-  result = @albums.search(searchInput)
-  binding.pry
-  erb(:albums)
+post('/albums/search_results') do
+  Album.all()
+  @search_albums = Album.search(params[:search])
+  erb(:search_results)
 end
-
-# get('/search_results') do
-#   @album = Album.find(params[:search])
-#   erb(:search_results)
-# end
-
 
 post('/albums') do
   name = params[:album_name]
