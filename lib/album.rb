@@ -35,11 +35,18 @@ class Album
     @@albums[id]
   end
 
-  def update(name)
+  def update(name, artist, year, genre)
     @name=name
+    @artist=artist
+    @year=year
+    @genre=genre
   end
 
   def delete
     @@albums.delete(self.id)
+  end
+
+  def self.search(name)
+    @@albums.select(name)
   end
 end
