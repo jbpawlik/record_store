@@ -30,9 +30,9 @@ end
 
 post('/albums') do
   name = params[:album_name]
-  album = Album.new(name, nil)
+  album = Album.new(name, nil, artist, year, genre)
   album.save()
-  @albums = Album.all() # Adding this line will fix the error.
+  @albums = Album.all()
   erb(:albums)
 end
 
