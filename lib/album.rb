@@ -51,8 +51,16 @@ class Album
     result.values[0]
   end
 
-  def self.sort
-    sorted = @@albums.sort_by {|k, v| v.name.downcase}
+  def self.sortAlbum
+    @@albums.values.sort_by {|album| album.name}
+  end
+
+  # def self.sortAlbum
+  #   sorted = @@albums.sort_by {|k, v| v.name.downcase}
+  # end
+
+  def songs
+    Song.find_by_album(self.id)
   end
 
 end
